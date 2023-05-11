@@ -1,10 +1,11 @@
 package misClases;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListaProductos {
 
-    private ArrayList<Producto> productos;
+    public ArrayList<Producto> productos;
 
     public ListaProductos() {
         this.productos = new ArrayList<>();
@@ -22,6 +23,7 @@ public class ListaProductos {
         return productos;
     }
 
+    //Burbuja
     public void ordenarPorCodigoBurbuja() {
         int n = productos.size();
         Producto temp;
@@ -36,6 +38,7 @@ public class ListaProductos {
         }
     }
 
+    //Seleccion
     public void ordenarPorCodigoSeleccion() {
         int n = productos.size();
         for (int i = 0; i < n - 1; i++) {
@@ -49,6 +52,7 @@ public class ListaProductos {
         }
     }
 
+    //Burbuja
     public void ordenarPorPrecioDesc() {
         int n = productos.size();
         for (int i = 0; i < n - 1; i++) {
@@ -62,6 +66,7 @@ public class ListaProductos {
         }
     }
 
+    //Quicksort
     public void ordenarPorNombre() {
         int izq = 0;
         int der = productos.size() - 1;
@@ -93,6 +98,7 @@ public class ListaProductos {
         return i + 1;
     }
 
+    //Insercion
     public void ordenarPorCodigoInsercion() {
         int n = productos.size();
         for (int i = 1; i < n; ++i) {
@@ -125,4 +131,69 @@ public class ListaProductos {
         return productosEncontrados;
     }
 
+    public void ordenarPorPrecioAsc() {
+        mergesortPorPrecioAsc(0, productos.size() - 1);
+    }
+
+    private void mergesortPorPrecioAsc(int inicio, int fin) {
+        if (inicio < fin) {
+            int medio = (inicio + fin) / 2;
+
+            mergesortPorPrecioAsc(inicio, medio);
+            mergesortPorPrecioAsc(medio + 1, fin);
+
+            mergePorPrecioAsc(inicio, medio, fin);
+        }
+    }
+
+    private void mergePorPrecioAsc(int inicio, int medio, int fin) {
+        int longitudIzquierda = medio - inicio + 1;
+        int longitudDerecha = fin - medio;
+
+        ArrayList<Producto> izquierda = new ArrayList<>();
+        ArrayList<Producto> derecha = new ArrayList<>();
+
+        for (int i = 0; i < longitudIzquierda; i++) {
+            izquierda.add(productos.get(inicio + i));
+        }
+        for (int j = 0; j < longitudDerecha; j++) {
+            derecha.add(productos.get(medio + 1 + j));
+        }
+
+        int i = 0, j = 0;
+        int k = inicio;
+        while (i < longitudIzquierda && j < longitudDerecha) {
+            if (izquierda.get(i).getPrecio() <= derecha.get(j).getPrecio()) {
+                productos.set(k, izquierda.get(i));
+                i++;
+            } else {
+                productos.set(k, derecha.get(j));
+                j++;
+            }
+            k++;
+        }
+
+        while (i < longitudIzquierda) {
+            productos.set(k, izquierda.get(i));
+            i++;
+            k++;
+        }
+
+        while (j < longitudDerecha) {
+            productos.set(k, derecha.get(j));
+            j++;
+            k++;
+        }
+    }
+
+    //Busqueda Lineal
+    public int buscarProductoPorNombre(List<Producto> productos, String nombreProducto) {
+        for (int i = 0; i < productos.size(); i++) {
+            Producto producto = productos.get(i);
+            if (producto.getNombre().equals(nombreProducto)) {
+                return i; // Retorna el índice del producto encontrado
+            }
+        }
+        return -1; // Retorna -1 si el producto no se encuentra en la lista
+    }
 }

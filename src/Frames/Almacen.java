@@ -4,6 +4,7 @@ import java.util.Random;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import Frames.Tienda;
+import misClases.*;
 
 public class Almacen extends javax.swing.JFrame {
 
@@ -184,7 +185,7 @@ public class Almacen extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldPrecioActionPerformed
 
     private void ButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgregarActionPerformed
-        // TODO add your handling code here:
+        /*
         Random random = new Random();
         int codigo = random.nextInt(9000) + 1000;
         String nombre = textFieldNombre.getText();
@@ -196,6 +197,7 @@ public class Almacen extends javax.swing.JFrame {
         Object[] fila = {codigo, nombre, marca, cantidad, seccion, precio};
         DefaultTableModel model = (DefaultTableModel) TablaAlmacen.getModel();
         model.addRow(fila);
+        */
     }//GEN-LAST:event_ButtonAgregarActionPerformed
 
     private void ButtonTiendaPasarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonTiendaPasarActionPerformed
