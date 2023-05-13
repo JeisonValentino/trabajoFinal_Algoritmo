@@ -46,7 +46,7 @@ public class vista_producto_item extends javax.swing.JPanel {
         nombre_producto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         nombre_producto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        imagen_producto.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jvalentino\\Desktop\\ACTIVIDADES\\Proyectos Programacion\\Proyectos Escritorio\\NetBeanst\\AvanceProyectoFinalAED_Maven\\src\\main\\java\\Imagenes\\carritoResized.png")); // NOI18N
+        imagen_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carritoResized.png"))); // NOI18N
         imagen_producto.setText("e");
         imagen_producto.setToolTipText("");
         imagen_producto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));

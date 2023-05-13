@@ -60,7 +60,7 @@ public class Tienda extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 204, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        EtiquetaBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jvalentino\\Desktop\\ACTIVIDADES\\Proyectos Programacion\\Proyectos Escritorio\\NetBeanst\\AvanceProyectoFinalAED_Maven\\src\\main\\java\\Imagenes\\etiqueta_flecha_morada.png")); // NOI18N
+        EtiquetaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/etiqueta_flecha_morada.PNG"))); // NOI18N
         EtiquetaBtn.setText("jLabel2");
         EtiquetaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         EtiquetaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -72,7 +72,7 @@ public class Tienda extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 102));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jvalentino\\Desktop\\ACTIVIDADES\\Proyectos Programacion\\Proyectos Escritorio\\NetBeanst\\AvanceProyectoFinalAED_Maven\\src\\main\\java\\Imagenes\\logomenoschico.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logomenoschico.PNG"))); // NOI18N
 
         CampoBuscador.setForeground(new java.awt.Color(153, 153, 153));
         CampoBuscador.setText("Buscar productos");
@@ -83,9 +83,9 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
-        BotonBuscador.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jvalentino\\Desktop\\ACTIVIDADES\\Proyectos Programacion\\Proyectos Escritorio\\NetBeanst\\AvanceProyectoFinalAED_Maven\\src\\main\\java\\Imagenes\\search(smaller).png")); // NOI18N
+        BotonBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search(smaller).PNG"))); // NOI18N
 
-        jButton2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jvalentino\\Desktop\\ACTIVIDADES\\Proyectos Programacion\\Proyectos Escritorio\\NetBeanst\\AvanceProyectoFinalAED_Maven\\src\\main\\java\\Imagenes\\carritoResized.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carritoResized.PNG"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

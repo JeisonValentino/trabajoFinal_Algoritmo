@@ -1,7 +1,11 @@
 package com.mycompany.avanceproyectofinalaed_maven.Frames;
 
+
+import com.mycompany.avanceproyectofinalaed_maven.Frames.Almacen;
 import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Tienda.Controladores.Controlador_Tienda;
 import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Tienda.Vistas.Tienda;
+import com.mycompany.avanceproyectofinalaed_maven.misClases.Empleado;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -27,7 +31,7 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        ButtonEmpleado = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -38,23 +42,24 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton2.setBackground(new java.awt.Color(153, 0, 102));
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
-        jButton2.setText("Empleado");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        ButtonEmpleado.setBackground(new java.awt.Color(153, 0, 102));
+        ButtonEmpleado.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
+        ButtonEmpleado.setText("Empleado");
+        ButtonEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                ButtonEmpleadoActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, 160, 70));
+        jPanel1.add(ButtonEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 400, 160, 70));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jvalentino\\Desktop\\ACTIVIDADES\\Proyectos Programacion\\Proyectos Escritorio\\NetBeanst\\AvanceProyectoFinalAED_Maven\\src\\main\\java\\Imagenes\\customer.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/customer.PNG"))); // NOI18N
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel2.setPreferredSize(new java.awt.Dimension(100, 100));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 280, 120, 110));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 120, 110));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jvalentino\\Desktop\\ACTIVIDADES\\Proyectos Programacion\\Proyectos Escritorio\\NetBeanst\\AvanceProyectoFinalAED_Maven\\src\\main\\java\\Imagenes\\Empleado.png")); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, 130));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/empleado.PNG"))); // NOI18N
+        jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, -1, 130));
 
         jButton1.setBackground(new java.awt.Color(153, 0, 153));
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
@@ -67,7 +72,7 @@ public class Inicio extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 150, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jvalentino\\Desktop\\ACTIVIDADES\\Proyectos Programacion\\Proyectos Escritorio\\NetBeanst\\AvanceProyectoFinalAED_Maven\\src\\main\\java\\Imagenes\\fondoLogin.jpg")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondoLogin.JPG"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -87,17 +92,22 @@ public class Inicio extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Tienda tienda = new Tienda();
-        Controlador_Tienda controlador_Tienda =new Controlador_Tienda(tienda);
+       Controlador_Tienda controlador_Tienda =new Controlador_Tienda(tienda);
         tienda.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void ButtonEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEmpleadoActionPerformed
         // TODO add your handling code here:
-        Almacen almacen = new Almacen();
-        almacen.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        Empleado emp1 = new Empleado("Inventario","CTAMBO23","Enrique Flores",20,1234567);
+        String codigo = JOptionPane.showInputDialog(null, "Ingrese su código:");
+        if(codigo.equals("CTAMBO23")){
+            Almacen almacen = new Almacen();
+            almacen.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "ERROR: CODIGO INCORRECTO");
+        }
+    }//GEN-LAST:event_ButtonEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -135,8 +145,8 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonEmpleado;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

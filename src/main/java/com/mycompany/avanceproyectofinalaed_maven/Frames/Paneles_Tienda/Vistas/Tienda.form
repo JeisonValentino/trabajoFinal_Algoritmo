@@ -53,7 +53,7 @@
         <Component class="javax.swing.JLabel" name="EtiquetaBtn">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jvalentino\Desktop\ACTIVIDADES\Proyectos Programacion\Proyectos Escritorio\NetBeanst\AvanceProyectoFinalAED_Maven\src\main\java\Imagenes\etiqueta_flecha_morada.png"/>
+              <Image iconType="3" name="/images/etiqueta_flecha_morada.PNG"/>
             </Property>
             <Property name="text" type="java.lang.String" value="jLabel2"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -120,7 +120,7 @@
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Jvalentino\Desktop\ACTIVIDADES\Proyectos Programacion\Proyectos Escritorio\NetBeanst\AvanceProyectoFinalAED_Maven\src\main\java\Imagenes\logomenoschico.png"/>
+                  <Image iconType="3" name="/images/logomenoschico.PNG"/>
                 </Property>
               </Properties>
             </Component>
@@ -143,14 +143,14 @@
             <Component class="javax.swing.JButton" name="BotonBuscador">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Jvalentino\Desktop\ACTIVIDADES\Proyectos Programacion\Proyectos Escritorio\NetBeanst\AvanceProyectoFinalAED_Maven\src\main\java\Imagenes\search(smaller).png"/>
+                  <Image iconType="3" name="/images/search(smaller).PNG"/>
                 </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="jButton2">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="2" name="C:\Users\Jvalentino\Desktop\ACTIVIDADES\Proyectos Programacion\Proyectos Escritorio\NetBeanst\AvanceProyectoFinalAED_Maven\src\main\java\Imagenes\carritoResized.png"/>
+                  <Image iconType="3" name="/images/carritoResized.PNG"/>
                 </Property>
               </Properties>
             </Component>

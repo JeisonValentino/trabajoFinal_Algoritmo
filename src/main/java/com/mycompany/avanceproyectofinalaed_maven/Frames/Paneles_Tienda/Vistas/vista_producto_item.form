@@ -91,7 +91,7 @@
         <Component class="javax.swing.JLabel" name="imagen_producto">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="C:\Users\Jvalentino\Desktop\ACTIVIDADES\Proyectos Programacion\Proyectos Escritorio\NetBeanst\AvanceProyectoFinalAED_Maven\src\main\java\Imagenes\carritoResized.png"/>
+              <Image iconType="3" name="/Imagenes/carritoResized.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="e"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>

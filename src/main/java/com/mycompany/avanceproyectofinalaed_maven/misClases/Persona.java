@@ -1,17 +1,10 @@
 package com.mycompany.avanceproyectofinalaed_maven.misClases;
 
-import java.util.Date;
-/**
- *
- * @author rvill
- */
 public abstract class Persona {
-    String nombre;
-    String Apellidos;
-    int Edad;
-    String Telefono;
-    Date AñosNacimiento;
-    String dni;
+
+    public String nombre;
+    public int edad;
+    public int DNI;
 
     public String getNombre() {
         return nombre;
@@ -21,48 +14,31 @@ public abstract class Persona {
         this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return Apellidos;
-    }
-
-    public void setApellidos(String Apellidos) {
-        this.Apellidos = Apellidos;
-    }
-
     public int getEdad() {
-        return Edad;
+        return edad;
     }
 
-    public void setEdad(int Edad) {
-        this.Edad = Edad;
+    public void setEdad(int edad) {
+        this.edad = edad;
     }
 
-    public String getTelefono() {
-        return Telefono;
+    public int getDNI() {
+        return DNI;
     }
 
-    public void setTelefono(String Telefono) {
-        this.Telefono = Telefono;
+    public void setDNI(int DNI) {
+        this.DNI = DNI;
     }
 
-    public Date getAñosNacimiento() {
-        return AñosNacimiento;
-    }
-
-    public void setAñosNacimiento(Date AñosNacimiento) {
-        this.AñosNacimiento = AñosNacimiento;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
+    public Persona(String nombre, int edad, int DNI) {
+        this.nombre = nombre;
+        this.edad = edad;
+        this.DNI = DNI;
     }
 
     @Override
     public String toString() {
-        return "Persona{" + "nombre=" + nombre + ", Apellidos=" + Apellidos + ", Edad=" + Edad + ", Telefono=" + Telefono + ", A\u00f1osNacimiento=" + AñosNacimiento + ", dni=" + dni + '}';
+        return "Persona{" + "nombre=" + nombre + ", edad=" + edad + ", DNI=" + DNI + '}';
     }
+
 }
