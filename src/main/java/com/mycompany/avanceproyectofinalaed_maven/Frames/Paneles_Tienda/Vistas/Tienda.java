@@ -1,8 +1,12 @@
 package com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Tienda.Vistas;
 
+import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Compra.Vistas.Carrito_Compras;
 import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 /**
  *
@@ -19,8 +23,19 @@ public class Tienda extends javax.swing.JFrame {
          
           Color colorFondoSalidaBtn = new Color(255, 255, 255);
          Color colorLetraSalidaBtn= new Color(255, 0, 255);
+           private JLayeredPane layeredPane;
+             private JPanel overlayPanel;
     public Tienda() {
         initComponents();
+          Carrito_Compras carrito =new Carrito_Compras();
+      layeredPane = getLayeredPane();
+        overlayPanel = new JPanel();
+        overlayPanel.setBackground(new Color(0, 0, 0, 100)); // Color semitransparente
+        overlayPanel.setBounds(0, 0, getWidth(), getHeight());
+        overlayPanel.setVisible(false);
+    layeredPane.add(overlayPanel, JLayeredPane.MODAL_LAYER);
+          jPopupMenu1.add(carrito);
+ 
     }
 
     /**
@@ -32,23 +47,30 @@ public class Tienda extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPopupMenu1 = new javax.swing.JPopupMenu();
         jPanel1 = new javax.swing.JPanel();
-        EtiquetaBtn = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         CampoBuscador = new javax.swing.JTextField();
         BotonBuscador = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        BtnDescuento = new javax.swing.JButton();
+        boton_compra = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        EtiquetaBtn = new javax.swing.JLabel();
         Sidebar_panel = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         inicio_PanelBtn = new javax.swing.JPanel();
         inicio_jlabel = new javax.swing.JLabel();
         productos_PanelBtn = new javax.swing.JPanel();
         producto_jlabel = new javax.swing.JLabel();
-        carrito_PanelBtn = new javax.swing.JPanel();
-        carrito_jlabel = new javax.swing.JLabel();
+        panel_inferior_sidevar = new javax.swing.JPanel();
         panel_hojas = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(new java.awt.Dimension(0, 0));
         addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
@@ -57,22 +79,18 @@ public class Tienda extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(255, 204, 0));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        EtiquetaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/etiqueta_flecha_morada.PNG"))); // NOI18N
-        EtiquetaBtn.setText("jLabel2");
-        EtiquetaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        EtiquetaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                EtiquetaBtnMouseClicked(evt);
-            }
-        });
-        jPanel1.add(EtiquetaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 83, 39));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 102));
+        jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                jPanel2ComponentResized(evt);
+            }
+        });
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logomenoschico.PNG"))); // NOI18N
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 110));
 
         CampoBuscador.setForeground(new java.awt.Color(153, 153, 153));
         CampoBuscador.setText("Buscar productos");
@@ -82,46 +100,62 @@ public class Tienda extends javax.swing.JFrame {
                 CampoBuscadorActionPerformed(evt);
             }
         });
+        jPanel2.add(CampoBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 59, 290, 29));
 
         BotonBuscador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/search(smaller).PNG"))); // NOI18N
+        jPanel2.add(BotonBuscador, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 50, 40, 40));
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carritoResized.PNG"))); // NOI18N
+        BtnDescuento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/etiqueta-de-precio (1).png"))); // NOI18N
+        BtnDescuento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnDescuentoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(BtnDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 50, 50, 40));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(CampoBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonBuscador)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addContainerGap(166, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(CampoBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BotonBuscador)))
-                .addGap(20, 20, 20))
-        );
+        boton_compra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carritoResized.PNG"))); // NOI18N
+        jPanel2.add(boton_compra, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 50, 40, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 120));
+        jPanel1.add(jPanel2, java.awt.BorderLayout.NORTH);
+
+        jPanel3.setLayout(new java.awt.BorderLayout());
+
+        jPanel7.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel7.setForeground(new java.awt.Color(255, 204, 0));
+        jPanel7.setLayout(new java.awt.BorderLayout());
+
+        jPanel6.setBackground(new java.awt.Color(255, 204, 0));
+        jPanel6.setForeground(new java.awt.Color(30, 30, 30));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        EtiquetaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/etiqueta_flecha_morada.PNG"))); // NOI18N
+        EtiquetaBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        EtiquetaBtn.setPreferredSize(new java.awt.Dimension(100, 100));
+        EtiquetaBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                EtiquetaBtnMouseClicked(evt);
+            }
+        });
+        jPanel6.add(EtiquetaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, 70));
 
         Sidebar_panel.setBackground(new java.awt.Color(255, 255, 255));
+        Sidebar_panel.setPreferredSize(new java.awt.Dimension(190, 1000));
+        Sidebar_panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 20, 1, 1));
+        jPanel4.setPreferredSize(new java.awt.Dimension(100, 90));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel5.setLayout(null);
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        Sidebar_panel.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(45, 5, -1, -1));
 
         inicio_PanelBtn.setBackground(new java.awt.Color(255, 255, 255));
         inicio_PanelBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inicio_PanelBtn.setName(""); // NOI18N
+        inicio_PanelBtn.setPreferredSize(new java.awt.Dimension(170, 60));
         inicio_PanelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 inicio_PanelBtnMouseEntered(evt);
@@ -130,26 +164,21 @@ public class Tienda extends javax.swing.JFrame {
                 inicio_PanelBtnMouseExited(evt);
             }
         });
+        inicio_PanelBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         inicio_jlabel.setBackground(new java.awt.Color(102, 0, 102));
         inicio_jlabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         inicio_jlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         inicio_jlabel.setText("Inicio");
         inicio_jlabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        inicio_PanelBtn.add(inicio_jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, -1, -1));
 
-        javax.swing.GroupLayout inicio_PanelBtnLayout = new javax.swing.GroupLayout(inicio_PanelBtn);
-        inicio_PanelBtn.setLayout(inicio_PanelBtnLayout);
-        inicio_PanelBtnLayout.setHorizontalGroup(
-            inicio_PanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(inicio_jlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        inicio_PanelBtnLayout.setVerticalGroup(
-            inicio_PanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(inicio_jlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
+        Sidebar_panel.add(inicio_PanelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, -1, -1));
 
         productos_PanelBtn.setBackground(new java.awt.Color(255, 255, 255));
         productos_PanelBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        productos_PanelBtn.setName(""); // NOI18N
+        productos_PanelBtn.setPreferredSize(new java.awt.Dimension(170, 60));
         productos_PanelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 productos_PanelBtnMouseEntered(evt);
@@ -158,101 +187,40 @@ public class Tienda extends javax.swing.JFrame {
                 productos_PanelBtnMouseExited(evt);
             }
         });
+        productos_PanelBtn.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         producto_jlabel.setBackground(new java.awt.Color(102, 0, 102));
         producto_jlabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         producto_jlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         producto_jlabel.setText("Productos");
         producto_jlabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        productos_PanelBtn.add(producto_jlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
-        javax.swing.GroupLayout productos_PanelBtnLayout = new javax.swing.GroupLayout(productos_PanelBtn);
-        productos_PanelBtn.setLayout(productos_PanelBtnLayout);
-        productos_PanelBtnLayout.setHorizontalGroup(
-            productos_PanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(producto_jlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        productos_PanelBtnLayout.setVerticalGroup(
-            productos_PanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(producto_jlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
+        Sidebar_panel.add(productos_PanelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, -1, -1));
 
-        carrito_PanelBtn.setBackground(new java.awt.Color(255, 255, 255));
-        carrito_PanelBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        carrito_PanelBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                carrito_PanelBtnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                carrito_PanelBtnMouseExited(evt);
-            }
-        });
+        jPanel6.add(Sidebar_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        carrito_jlabel.setBackground(new java.awt.Color(102, 0, 102));
-        carrito_jlabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        carrito_jlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        carrito_jlabel.setText("Carrito");
-        carrito_jlabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        panel_inferior_sidevar.setLayout(new java.awt.BorderLayout());
+        jPanel6.add(panel_inferior_sidevar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        javax.swing.GroupLayout carrito_PanelBtnLayout = new javax.swing.GroupLayout(carrito_PanelBtn);
-        carrito_PanelBtn.setLayout(carrito_PanelBtnLayout);
-        carrito_PanelBtnLayout.setHorizontalGroup(
-            carrito_PanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(carrito_jlabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        carrito_PanelBtnLayout.setVerticalGroup(
-            carrito_PanelBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(carrito_jlabel, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
+        jPanel7.add(jPanel6, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout Sidebar_panelLayout = new javax.swing.GroupLayout(Sidebar_panel);
-        Sidebar_panel.setLayout(Sidebar_panelLayout);
-        Sidebar_panelLayout.setHorizontalGroup(
-            Sidebar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(inicio_PanelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(productos_PanelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(carrito_PanelBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        Sidebar_panelLayout.setVerticalGroup(
-            Sidebar_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Sidebar_panelLayout.createSequentialGroup()
-                .addGap(106, 106, 106)
-                .addComponent(inicio_PanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(productos_PanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(carrito_PanelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(202, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(Sidebar_panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 190, 500));
+        jPanel3.add(jPanel7, java.awt.BorderLayout.WEST);
 
         panel_hojas.setBackground(new java.awt.Color(255, 204, 0));
+        panel_hojas.setToolTipText("");
+        panel_hojas.setPreferredSize(new java.awt.Dimension(721, 500));
+        panel_hojas.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                panel_hojasComponentResized(evt);
+            }
+        });
+        panel_hojas.setLayout(new java.awt.BorderLayout());
+        jPanel3.add(panel_hojas, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout panel_hojasLayout = new javax.swing.GroupLayout(panel_hojas);
-        panel_hojas.setLayout(panel_hojasLayout);
-        panel_hojasLayout.setHorizontalGroup(
-            panel_hojasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
-        );
-        panel_hojasLayout.setVerticalGroup(
-            panel_hojasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
+        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        jPanel1.add(panel_hojas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 610, 500));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -269,36 +237,39 @@ public class Tienda extends javax.swing.JFrame {
      
     }//GEN-LAST:event_EtiquetaBtnMouseClicked
 
+    private void jPanel2ComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentResized
+     
+    }//GEN-LAST:event_jPanel2ComponentResized
+
+    private void panel_hojasComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_panel_hojasComponentResized
+              
+
+    }//GEN-LAST:event_panel_hojasComponentResized
+
+    private void productos_PanelBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productos_PanelBtnMouseExited
+        productos_PanelBtn.setBackground(colorFondoSalidaBtn);
+        producto_jlabel.setBackground(colorLetraSalidaBtn);
+    }//GEN-LAST:event_productos_PanelBtnMouseExited
+
+    private void productos_PanelBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productos_PanelBtnMouseEntered
+
+        productos_PanelBtn.setBackground(colorFondoIngresoBtn);
+    }//GEN-LAST:event_productos_PanelBtnMouseEntered
+
+    private void inicio_PanelBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicio_PanelBtnMouseExited
+        inicio_PanelBtn.setBackground(colorFondoSalidaBtn);
+        inicio_jlabel.setBackground(colorLetraSalidaBtn);
+    }//GEN-LAST:event_inicio_PanelBtnMouseExited
+
     private void inicio_PanelBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicio_PanelBtnMouseEntered
-  
+
         inicio_PanelBtn.setBackground(colorFondoIngresoBtn);
         inicio_jlabel.setBackground(colorLetraIngresoBtn);
     }//GEN-LAST:event_inicio_PanelBtnMouseEntered
 
-    private void productos_PanelBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productos_PanelBtnMouseEntered
- 
-        productos_PanelBtn.setBackground(colorFondoIngresoBtn);
-        producto_jlabel.setBackground(colorLetraIngresoBtn);    }//GEN-LAST:event_productos_PanelBtnMouseEntered
+    private void BtnDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnDescuentoActionPerformed
 
-    private void carrito_PanelBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carrito_PanelBtnMouseEntered
-     carrito_PanelBtn.setBackground(colorFondoIngresoBtn);
-        carrito_jlabel.setBackground(colorLetraIngresoBtn); 
-    }//GEN-LAST:event_carrito_PanelBtnMouseEntered
-
-    private void inicio_PanelBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inicio_PanelBtnMouseExited
-     inicio_PanelBtn.setBackground(colorFondoSalidaBtn);
-        inicio_jlabel.setBackground(colorLetraSalidaBtn);
-    }//GEN-LAST:event_inicio_PanelBtnMouseExited
-
-    private void productos_PanelBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_productos_PanelBtnMouseExited
-     productos_PanelBtn.setBackground(colorFondoSalidaBtn);
-        producto_jlabel.setBackground(colorLetraSalidaBtn);
-    }//GEN-LAST:event_productos_PanelBtnMouseExited
-
-    private void carrito_PanelBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_carrito_PanelBtnMouseExited
- carrito_PanelBtn.setBackground(colorFondoSalidaBtn);
-        carrito_jlabel.setBackground(colorLetraSalidaBtn);
-    }//GEN-LAST:event_carrito_PanelBtnMouseExited
+    }//GEN-LAST:event_BtnDescuentoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,33 +308,67 @@ public class Tienda extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonBuscador;
+    public javax.swing.JButton BtnDescuento;
     private javax.swing.JTextField CampoBuscador;
     private javax.swing.JLabel EtiquetaBtn;
     private javax.swing.JPanel Sidebar_panel;
-    private javax.swing.JPanel carrito_PanelBtn;
-    private javax.swing.JLabel carrito_jlabel;
+    private javax.swing.JButton boton_compra;
     private javax.swing.JPanel inicio_PanelBtn;
     private javax.swing.JLabel inicio_jlabel;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    public javax.swing.JPanel jPanel7;
+    public javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPanel panel_hojas;
+    private javax.swing.JPanel panel_inferior_sidevar;
     private javax.swing.JLabel producto_jlabel;
     private javax.swing.JPanel productos_PanelBtn;
     // End of variables declaration//GEN-END:variables
 
+    
+    public JPanel getJpanel7(){
+        return jPanel7;
+    }
+    
+    
+    public JPopupMenu  getjPopupMenu1(){
+        return jPopupMenu1;
+    }
+  
     public JLabel getEtiquetaBtn() {
         return EtiquetaBtn;
     }
 
-    public JPanel getSidebar_panel() {
+        public JPanel getSidebar_panel() {
         return Sidebar_panel;
     }
 
-    public JLabel getCarrito_jlabel() {
-        return carrito_jlabel;
+    public JButton getBoton_compra() {
+        return boton_compra;
     }
+
+    public JPanel getOverlayPanel() {
+        return overlayPanel;
+    }
+
+
+
+
+
+    public JButton getBtnDescuento() {
+        return BtnDescuento;
+    }
+
+    public void setBtnDescuento(JButton BtnDescuento) {
+        this.BtnDescuento = BtnDescuento;
+    }
+
+ 
 
     public JLabel getInicio_jlabel() {
         return inicio_jlabel;
@@ -377,9 +382,7 @@ public class Tienda extends javax.swing.JFrame {
         return panel_hojas;
     }
 
-    public JPanel getCarrito_PanelBtn() {
-        return carrito_PanelBtn;
-    }
+
 
     public JPanel getInicio_PanelBtn() {
         return inicio_PanelBtn;

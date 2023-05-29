@@ -2,8 +2,10 @@ package com.mycompany.avanceproyectofinalaed_maven.Frames;
 
 
 import com.mycompany.avanceproyectofinalaed_maven.Frames.Almacen;
+import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Compra.Vistas.Modal_Ofertas;
 import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Tienda.Controladores.Controlador_Tienda;
 import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Tienda.Vistas.Tienda;
+import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Tienda.Vistas.vista_producto;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Empleado;
 import javax.swing.JOptionPane;
 
@@ -92,7 +94,9 @@ public class Inicio extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Tienda tienda = new Tienda();
-       Controlador_Tienda controlador_Tienda =new Controlador_Tienda(tienda);
+        Modal_Ofertas modal =new Modal_Ofertas(tienda,true );
+        vista_producto vista_pro=new vista_producto();
+       Controlador_Tienda controlador_Tienda =new Controlador_Tienda(tienda,modal,vista_pro);
         tienda.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed

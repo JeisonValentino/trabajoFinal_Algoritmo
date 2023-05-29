@@ -28,92 +28,54 @@ public class vista_producto_item extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        nombre_producto = new javax.swing.JLabel();
         imagen_producto = new javax.swing.JLabel();
+        nombre_producto = new javax.swing.JLabel();
         precio_producto = new javax.swing.JLabel();
         btn_Agregar_carrito = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        setMinimumSize(new java.awt.Dimension(0, 0));
+        setName(""); // NOI18N
+        setPreferredSize(new java.awt.Dimension(200, 200));
+        setLayout(new java.awt.GridLayout(4, 1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        imagen_producto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        imagen_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carritoResized.PNG"))); // NOI18N
+        imagen_producto.setText("e");
+        imagen_producto.setToolTipText("");
+        imagen_producto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        imagen_producto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        add(imagen_producto);
 
         nombre_producto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombre_producto.setText("jLabel1");
         nombre_producto.setToolTipText("");
         nombre_producto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         nombre_producto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        imagen_producto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/carritoResized.png"))); // NOI18N
-        imagen_producto.setText("e");
-        imagen_producto.setToolTipText("");
-        imagen_producto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        imagen_producto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        add(nombre_producto);
 
         precio_producto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         precio_producto.setText("jLabel1");
         precio_producto.setToolTipText("");
         precio_producto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         precio_producto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        add(precio_producto);
 
         btn_Agregar_carrito.setBackground(new java.awt.Color(255, 0, 255));
         btn_Agregar_carrito.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Agregar_carrito.setMinimumSize(new java.awt.Dimension(0, 0));
+        btn_Agregar_carrito.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Agregar");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btn_Agregar_carrito.add(jLabel1, java.awt.BorderLayout.CENTER);
 
-        javax.swing.GroupLayout btn_Agregar_carritoLayout = new javax.swing.GroupLayout(btn_Agregar_carrito);
-        btn_Agregar_carrito.setLayout(btn_Agregar_carritoLayout);
-        btn_Agregar_carritoLayout.setHorizontalGroup(
-            btn_Agregar_carritoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-        );
-        btn_Agregar_carritoLayout.setVerticalGroup(
-            btn_Agregar_carritoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_Agregar_carrito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(precio_producto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nombre_producto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(imagen_producto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(67, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(imagen_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(nombre_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(precio_producto, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btn_Agregar_carrito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        add(btn_Agregar_carrito);
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -121,7 +83,6 @@ public class vista_producto_item extends javax.swing.JPanel {
     private javax.swing.JPanel btn_Agregar_carrito;
     private javax.swing.JLabel imagen_producto;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombre_producto;
     private javax.swing.JLabel precio_producto;
     // End of variables declaration//GEN-END:variables
@@ -138,10 +99,15 @@ public class vista_producto_item extends javax.swing.JPanel {
         return precio_producto;
     }
 
-    public JPanel getjPanel1() {
-        return jPanel1;
+    public JPanel getBtn_Agregar_carrito() {
+        return btn_Agregar_carrito;
     }
 
+    public void setBtn_Agregar_carrito(JPanel btn_Agregar_carrito) {
+        this.btn_Agregar_carrito = btn_Agregar_carrito;
+    }
+
+  
 
 
 
