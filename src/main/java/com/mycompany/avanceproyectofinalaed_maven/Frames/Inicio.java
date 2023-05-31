@@ -1,7 +1,7 @@
 package com.mycompany.avanceproyectofinalaed_maven.Frames;
 
 
-import com.mycompany.avanceproyectofinalaed_maven.Frames.Almacen;
+import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_administrador.Almacen;
 import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Compra.Vistas.Modal_Ofertas;
 import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Tienda.Controladores.Controlador_Tienda;
 import com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Tienda.Vistas.Tienda;
@@ -106,6 +106,7 @@ public class Inicio extends javax.swing.JFrame {
         Empleado emp1 = new Empleado("Inventario","CTAMBO23","Enrique Flores",20,1234567);
         String codigo = JOptionPane.showInputDialog(null, "Ingrese su código:");
         if(codigo.equals("CTAMBO23")){
+            
             Almacen almacen = new Almacen();
             almacen.setVisible(true);
         } else {

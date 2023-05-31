@@ -4,6 +4,7 @@
  */
 package com.mycompany.avanceproyectofinalaed_maven.misClases.Listas;
 
+import com.mycompany.avanceproyectofinalaed_maven.misClases.Constantes.codificacion;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Exceciones.PropiedadesFaltantes;
 import static com.mycompany.avanceproyectofinalaed_maven.misClases.Exceciones.PropiedadesFaltantes.verificarTodasPropiedadesFaltantes;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Item_Producto;
@@ -106,6 +107,42 @@ try{
       return Optional.empty();
 }
 
+    }
+
+    @Override
+    public Optional<List<Item_Producto>> retornarLista_itemProducto_especifico(String codigo) {
+        
+        
+        if(!retornarLista_itemProducto().isEmpty()){ //VERIFICA SI EL RETORNO DE TODA LA LISTA DE LOS ITEMS PRODUCTO RETORNA VACIO O NO 
+List<Item_Producto> list_items=  new ArrayList<>();
+
+for( Item_Producto item_pro :retornarLista_itemProducto().get()){
+    if(item_pro.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA).equals(codigo.substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA))){
+        list_items.add(item_pro);
+    }
+}
+
+return Optional.of(list_items);
+        }else{
+            return Optional.empty(); //RETORNA UN ESTADO VACIO 
+        }
+    }
+
+    @Override
+    public Optional<List<Item_Producto>> retornarLista_itemProducto_especifico_estado(String codigo, String estado) {
+              if(!retornarLista_itemProducto().isEmpty()){ //VERIFICA SI EL RETORNO DE TODA LA LISTA DE LOS ITEMS PRODUCTO RETORNA VACIO O NO 
+List<Item_Producto> list_items=  new ArrayList<>();
+
+for( Item_Producto item_pro :retornarLista_itemProducto().get()){
+    if(item_pro.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA).equals(codigo.substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA))&& item_pro.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA).equals(estado) ){
+        list_items.add(item_pro);
+    }
+}
+
+return Optional.of(list_items);
+        }else{
+            return Optional.empty(); //RETORNA UN ESTADO VACIO 
+        }
     }
     
  

@@ -18,4 +18,6 @@ public interface Interface_item_productos {
          void  AgregarDatos_itemProducto(Item_Producto  item_producto);
         Optional< Item_Producto> buscarPorId_itemProducto(String id )  ;
         Optional<List<Item_Producto>> retornarLista_itemProducto();
+            Optional<List<Item_Producto>> retornarLista_itemProducto_especifico(String codigo);
+             Optional<List<Item_Producto>> retornarLista_itemProducto_especifico_estado(String codigo,String estado);
 }

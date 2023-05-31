@@ -18,4 +18,5 @@ public interface  Interface_productos {
          void  AgregarDatos(Productos  producto);
         Optional< Productos> buscarPorId(String id )  ;
         Optional<List<Productos>> retornarListaProductos();
+        Optional<List<Productos>> retornarListaProductos_busqueda(String id);
 }

@@ -13,6 +13,7 @@ public class Modelo_producto_carrito {
          private static int contadorCantidad = 1;
 public int Id;
     public String Producto;
+    public String codigo_producto;
     public int Cantidad;
     public double Precio;
 
@@ -20,11 +21,20 @@ public int Id;
     
     }
 
-    public Modelo_producto_carrito( String Producto, double Precio) {
+    public Modelo_producto_carrito( String Producto, double Precio,String codigo_producto) {
         this.Id = contadorId++;
         this.Producto = Producto;
         this.Cantidad = 1;
         this.Precio = Precio;
+        this.codigo_producto=codigo_producto;
+    }
+
+    public String getCodigo_producto() {
+        return codigo_producto;
+    }
+
+    public void setCodigo_producto(String codigo_producto) {
+        this.codigo_producto = codigo_producto;
     }
     
     

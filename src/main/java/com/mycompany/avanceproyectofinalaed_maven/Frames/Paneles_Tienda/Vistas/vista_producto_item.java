@@ -47,6 +47,8 @@ public class vista_producto_item extends javax.swing.JPanel {
         imagen_producto.setToolTipText("");
         imagen_producto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         imagen_producto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        imagen_producto.setMaximumSize(new java.awt.Dimension(200, 200));
+        imagen_producto.setPreferredSize(new java.awt.Dimension(120, 120));
         add(imagen_producto);
 
         nombre_producto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

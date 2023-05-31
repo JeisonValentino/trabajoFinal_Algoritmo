@@ -7,6 +7,7 @@ package com.mycompany.avanceproyectofinalaed_maven.misClases.Listas;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Exceciones.PropiedadesFaltantes;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Productos;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Repositorios.Interface_productos;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -19,10 +20,13 @@ import javax.swing.JOptionPane;
  */
 public class Lista_Productos extends PropiedadesFaltantes implements Interface_productos   {
     
-    public List<Productos> lista_productos= new ArrayList<>();
+    
+    
+    public static Lista_Productos instancia;
+    public  List<Productos> lista_productos;
     
     public Lista_Productos(){
-        
+        lista_productos= new ArrayList<>();
     }
 
     public Lista_Productos(  List<Productos> lista_productos ) {
@@ -31,7 +35,12 @@ public class Lista_Productos extends PropiedadesFaltantes implements Interface_p
         
     }
     
-    
+    public static Lista_Productos getInstancia() {
+        if (instancia == null) {
+            instancia = new Lista_Productos();
+        }
+        return instancia;
+    }
     
     public void  ActualizarDatos(Productos producto ){
         
@@ -99,17 +108,38 @@ public class Lista_Productos extends PropiedadesFaltantes implements Interface_p
     }
 
     @Override
-    public Optional<List<Productos>> retornarListaProductos() {
+    public  Optional<List<Productos>> retornarListaProductos() {
 
 
 try{
     
     if(lista_productos.isEmpty())throw new IllegalArgumentException("no se encontraron datos en la lista de productos "); 
+    for(Productos pro : lista_productos){
+        System.out.println(pro.getId());
+    }
   return Optional.of(lista_productos);
 }catch(IllegalArgumentException ex ){
+    System.out.println(ex.getMessage());
       return Optional.empty();
 }
 
+    }
+
+    @Override
+    public Optional<List<Productos>> retornarListaProductos_busqueda(String id) {
+      try{
+    List<Productos> list_busqueda=new ArrayList<Productos>();
+    if(lista_productos.isEmpty())throw new IllegalArgumentException("no se encontraron datos en la lista de productos "); 
+    for(Productos pro : lista_productos){
+        if(pro.getId().startsWith(id)|| pro.getMarca().startsWith(id)||pro.getNombre().startsWith(id)||pro.getSeccion().startsWith(id)){
+        list_busqueda.add(pro);
+        }
+    }
+  return Optional.of(list_busqueda);
+}catch(IllegalArgumentException ex ){
+    System.out.println(ex.getMessage());
+      return Optional.empty();
+}
     }
 
 

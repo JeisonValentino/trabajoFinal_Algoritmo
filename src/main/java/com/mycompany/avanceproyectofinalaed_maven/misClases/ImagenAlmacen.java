@@ -9,11 +9,23 @@ package com.mycompany.avanceproyectofinalaed_maven.misClases;
  * @author Jvalentino
  */
 public class ImagenAlmacen {
-    
+    private static int  contador=1;
     String imagen_id;
     String titulo;
     byte[] imagen;
 
+    public ImagenAlmacen() {
+    }
+
+    public ImagenAlmacen( String titulo, byte[] imagen) {
+        this.imagen_id = "img-"+contador++;
+        this.titulo = titulo;
+        this.imagen = imagen;
+    }
+
+    
+    
+    
     public String getImagen_id() {
         return imagen_id;
     }

@@ -4,6 +4,7 @@
  */
 package com.mycompany.avanceproyectofinalaed_maven.misClases;
 
+import com.mycompany.avanceproyectofinalaed_maven.misClases.Constantes.codificacion;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Listas.Lista_Item_Producto;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Repositorios.Interface_item_productos;
 import java.time.LocalDateTime;
@@ -36,7 +37,7 @@ private String estado;
 
 
     private String GenerarCodigo(String codigoProducto ){
-         String codigoItem = codigoProducto.substring(0, 3); 
+         String codigoItem = codigoProducto.substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA); 
          Interface_item_productos interfaz= new Lista_Item_Producto();
          
      if(interfaz.retornarLista_itemProducto().isEmpty()){
@@ -47,7 +48,7 @@ private String estado;
             List<Item_Producto> items = interfaz.retornarLista_itemProducto().get(); 
              
             for(Item_Producto it : items ){
-                if(codigoItem.equals(it.id.substring(0, 3))){
+                if(codigoItem.equals(it.id.substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA))){
                      return codigoItem + String.format("%03d", items.size()+1);
                 }
             }
