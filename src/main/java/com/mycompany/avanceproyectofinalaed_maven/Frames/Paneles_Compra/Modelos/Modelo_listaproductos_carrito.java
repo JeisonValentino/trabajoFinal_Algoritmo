@@ -41,18 +41,14 @@ public class Modelo_listaproductos_carrito {
         return lista_productos;
     }
     
-        public Modelo_producto_carrito obtenerListaCarrito_espefico(String codigo){
-        if(lista_productos.isEmpty()) throw new IllegalArgumentException("no hay datos");
-        
-        for(Modelo_producto_carrito mo:   lista_productos){
-            
-            if(mo.codigo_producto.equals(codigo)){
-                        return mo;
-            }
+       public Modelo_producto_carrito obtenerListaCarrito_espefico(String codigo) {
+    for (Modelo_producto_carrito mo : lista_productos) {
+        if (mo.codigo_producto.equals(codigo)) {
+            return mo;
         }
-        
-return null;
     }
+    return null;
+}
     
     
     public void actualizarDatosCarrito (Productos m  ) {
@@ -61,19 +57,23 @@ return null;
                     boolean estadoActivoEncontrado = false;
         
         for(Modelo_producto_carrito item_pro:  lista_productos){
-               System.out.println("entro al PRIMER PARAMATOR  ");
+    
             if(m.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA).equals(item_pro.getCodigo_producto().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA))){
-                   System.out.println("entro al SEGUNDO PARAMTERO ");
+              
              
-                
-         System.out.println(""+obtenerListaCarrito_espefico(m.getId()).Cantidad);
-              System.out.println(""+interfaz.retornarLista_itemProducto_especifico_estado(m.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA),"activo").get().size());
- System.out.println("aqui se direron los valores ");
-         
-         if(obtenerListaCarrito_espefico(m.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA)).Cantidad <=interfaz.retornarLista_itemProducto_especifico_estado(m.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA),"activo").get().size()){
+              if(obtenerListaCarrito_espefico(m.getId()).Cantidad ==interfaz.retornarLista_itemProducto_especifico_estado(m.getId(),"activo").get().size()){
+                   
+                    System.out.println("entro al parametro de no cantidad");
+                    return ; 
+                }
+              
+               System.out.println(interfaz.retornarLista_itemProducto_especifico_estado(m.getId(),"activo").get().size());
+         if(obtenerListaCarrito_espefico(m.getId()).getCantidad() <interfaz.retornarLista_itemProducto_especifico_estado(m.getId(),"activo").get().size()){
                      System.out.println("entro al parametro de agregar producto");
                       estadoActivoEncontrado = true;
+           
              item_pro.aumentarCantidad();
+        
                 return;
                 }
                

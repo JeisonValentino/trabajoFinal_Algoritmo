@@ -47,7 +47,7 @@ public class Carrito_Compras extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Producto", "Cantidad", "Precio", ""
+                "Id", "Producto", "Cantidad", "Precio"
             }
         ));
         jScrollPane1.setViewportView(table_compras);

@@ -146,7 +146,7 @@ return Optional.of(list_items);
 List<Item_Producto> list_items=  new ArrayList<>();
 
 for( Item_Producto item_pro :retornarLista_itemProducto().get()){
-    if(item_pro.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA).equals(codigo.substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA))&& item_pro.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA).equals(estado) ){
+    if(item_pro.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA).equals(codigo.substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA)) && item_pro.getEstado().equals(estado) ){
         list_items.add(item_pro);
     }
 }

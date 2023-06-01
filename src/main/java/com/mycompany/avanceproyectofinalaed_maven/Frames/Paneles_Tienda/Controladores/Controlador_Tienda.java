@@ -290,10 +290,11 @@ public class Controlador_Tienda {
     
     
     public void actualizarTablaCompras(){
-        tienda_vista.getCarrito().getTable_compras();
-             DefaultTableModel modelo_tABLE = (DefaultTableModel) tienda_vista.getCarrito().getTable_compras().getModel();
-             
+                    DefaultTableModel modelo_tABLE = (DefaultTableModel) tienda_vista.getCarrito().getTable_compras().getModel();
+              modelo_tABLE.setRowCount(0);
              for(Modelo_producto_carrito pro : modelo_listaproductos_carrito.obtenerListaCarrito()){
+                 System.out.println(pro.getId()+"AQUI ESTA EL ID CARRITO"
+                         + "");
               Object[] Fila = {pro.getId(), pro.getProducto(), 
                              pro.getCantidad(), pro.getPrecio(), 
                             };
@@ -308,25 +309,22 @@ public class Controlador_Tienda {
     public void agregarProducto_carrito(Productos id) {
     
  System.out.print(id.getId());
-       try{
-if(modelo_listaproductos_carrito.obtenerListaCarrito_espefico(id.getId())!=null){
-       System.out.println("actualizar datos ");    
-                modelo_listaproductos_carrito.actualizarDatosCarrito(id);
-                          actualizarTablaCompras();
-      
-              }
 
+       
+       
+       try {
+    if (modelo_listaproductos_carrito.obtenerListaCarrito_espefico(id.getId()) != null) {
+        System.out.println("actualizar datos ");
+        modelo_listaproductos_carrito.actualizarDatosCarrito(id);
+    } else {
+        System.out.println("agregar datos ");
+        modelo_listaproductos_carrito.agregarDatosCarrito(id);
+    }
 
-
- 
-       }catch(Exception ex ){
-                    
-        System.out.println("agregar datos ");  
-                            modelo_listaproductos_carrito.agregarDatosCarrito(id);
-                         actualizarTablaCompras();
-                      
-                     
-       }
+    actualizarTablaCompras();
+} catch (Exception ex) {
+    // Manejo de excepciones
+}
 
                 
 
