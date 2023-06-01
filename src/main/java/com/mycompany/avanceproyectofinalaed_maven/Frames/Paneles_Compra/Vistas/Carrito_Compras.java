@@ -5,6 +5,7 @@
 package com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Compra.Vistas;
 
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -29,7 +30,7 @@ public class Carrito_Compras extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table_compras = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -38,7 +39,7 @@ public class Carrito_Compras extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(250, 300));
         setLayout(new java.awt.BorderLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table_compras.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -49,7 +50,7 @@ public class Carrito_Compras extends javax.swing.JPanel {
                 "Producto", "Cantidad", "Precio", ""
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table_compras);
 
         add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
@@ -77,11 +78,15 @@ public class Carrito_Compras extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table_compras;
     // End of variables declaration//GEN-END:variables
 
     public JScrollPane getjScrollPane1() {
         return jScrollPane1;
+    }
+
+    public JTable getTable_compras() {
+        return table_compras;
     }
 
 

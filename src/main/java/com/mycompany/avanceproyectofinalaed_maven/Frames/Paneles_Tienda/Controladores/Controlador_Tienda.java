@@ -35,6 +35,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -46,7 +47,7 @@ public class Controlador_Tienda {
     private final vista_producto vista__producto;
     private final Modal_Ofertas modal;
     Lista_Productos lista_productos= Lista_Productos.getInstancia();
-    Modelo_listaproductos_carrito modelo_listaproductos_carrito = new Modelo_listaproductos_carrito();
+    Modelo_listaproductos_carrito modelo_listaproductos_carrito =  Modelo_listaproductos_carrito.getSession();
 
     private void MostraPanel(JPanel p) {
         p.setSize(610, 500);
@@ -286,33 +287,54 @@ public class Controlador_Tienda {
         }
     }
 
+    
+    
+    public void actualizarTablaCompras(){
+        tienda_vista.getCarrito().getTable_compras();
+             DefaultTableModel modelo_tABLE = (DefaultTableModel) tienda_vista.getCarrito().getTable_compras().getModel();
+             
+             for(Modelo_producto_carrito pro : modelo_listaproductos_carrito.obtenerListaCarrito()){
+              Object[] Fila = {pro.getId(), pro.getProducto(), 
+                             pro.getCantidad(), pro.getPrecio(), 
+                            };
+              
+            modelo_tABLE.addRow(Fila);
+             }
+    }
+             
+    
+    
+    
     public void agregarProducto_carrito(Productos id) {
-        for (Productos pro : lista_productos.retornarListaProductos().get()) {
-            if (pro.getId().equals(id.getId())) {
+    
+ System.out.print(id.getId());
+       try{
+if(modelo_listaproductos_carrito.obtenerListaCarrito_espefico(id.getId())!=null){
+       System.out.println("actualizar datos ");    
+                modelo_listaproductos_carrito.actualizarDatosCarrito(id);
+                          actualizarTablaCompras();
+      
+              }
 
-                for (Modelo_producto_carrito mo : modelo_listaproductos_carrito.obtenerListaCarrito()) {
-                    if (!mo.getCodigo_producto().equals(mo.Id)) {  //SI NO EXISTE ALGUN ELEMENTO DENTRO DEL CARRITO , SE AGREGA EL ELEMENTO AL CARRITO 
-                        try {
 
+
+ 
+       }catch(Exception ex ){
+                    
+        System.out.println("agregar datos ");  
                             modelo_listaproductos_carrito.agregarDatosCarrito(id);
-                        } catch (IllegalStateException ex) {
-                            JOptionPane.showMessageDialog(null, "Se encontraron problemas  : " + ex.getMessage(), "Atención", JOptionPane.WARNING_MESSAGE);
+                         actualizarTablaCompras();
+                      
+                     
+       }
 
-                        }
-                    } else { // SI YA EXISTE UN ELEMENTO DENTRO DEL CARRITO SE ACTUALIZA EL VALOR AL CARRITO SUMANDOLE A LA CANTIDAD 
-                        try {
+                
 
-                            modelo_listaproductos_carrito.actualizarDatosCarrito(id);
-                        } catch (IllegalStateException ex) {
-                            JOptionPane.showMessageDialog(null, "Se encontraron problemas  : " + ex.getMessage(), "Atención", JOptionPane.WARNING_MESSAGE);
+    
 
-                        }
-                    }
 
-                }
-
-            }
-        }
+            
+        
     }
 
          public static BufferedImage redimensionarImagen(Image imagenOriginal, int nuevoAncho, int nuevoAlto) {

@@ -25,9 +25,10 @@ public class Tienda extends javax.swing.JFrame {
          Color colorLetraSalidaBtn= new Color(255, 0, 255);
            private JLayeredPane layeredPane;
              private JPanel overlayPanel;
+               Carrito_Compras carrito =new Carrito_Compras();
     public Tienda() {
         initComponents();
-          Carrito_Compras carrito =new Carrito_Compras();
+        
       layeredPane = getLayeredPane();
         overlayPanel = new JPanel();
         overlayPanel.setBackground(new Color(0, 0, 0, 100)); // Color semitransparente
@@ -330,6 +331,11 @@ public class Tienda extends javax.swing.JFrame {
     private javax.swing.JPanel productos_PanelBtn;
     // End of variables declaration//GEN-END:variables
 
+    
+    
+    public Carrito_Compras getCarrito(){
+        return carrito;
+    }
     
     public JPanel getJpanel7(){
         return jPanel7;

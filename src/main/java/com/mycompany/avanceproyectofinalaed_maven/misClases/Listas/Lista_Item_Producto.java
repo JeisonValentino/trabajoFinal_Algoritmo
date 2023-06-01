@@ -8,7 +8,6 @@ import com.mycompany.avanceproyectofinalaed_maven.misClases.Constantes.codificac
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Exceciones.PropiedadesFaltantes;
 import static com.mycompany.avanceproyectofinalaed_maven.misClases.Exceciones.PropiedadesFaltantes.verificarTodasPropiedadesFaltantes;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Item_Producto;
-import static com.mycompany.avanceproyectofinalaed_maven.misClases.Listas.Lista_Productos.instancia;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Repositorios.Interface_item_productos;
 import java.util.ArrayList;
 import java.util.List;
