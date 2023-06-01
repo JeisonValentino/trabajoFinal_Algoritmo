@@ -7,7 +7,10 @@ package com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_administrador;
 import static com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_administrador.Almacen.redimensionarImagen;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Item_Producto;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Listas.Lista_Item_Producto;
+import com.mycompany.avanceproyectofinalaed_maven.misClases.Listas.Lista_Productos;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Productos;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -30,12 +33,34 @@ public class Vista_items_almacen extends javax.swing.JDialog {
      */
     
     private Lista_Item_Producto list_items =Lista_Item_Producto.getInstancia() ;
+ 
     public Vista_items_almacen(JFrame frame, boolean modal, String id) {
         super(frame, modal);
         initComponents();
     
         actualizarTabla(id);
+        
+       agregar_item.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int cantidad = Integer.parseInt(cantidad_txt.getText());
+                for(int i =0 ; i<cantidad;i++){
+         agregarItems(id);
+                }
+                actualizarTabla(id);
+            }
+
+      
+
+        });
     }
+    
+    public void agregarItems(String id){
+               String txt=fecha_txt.getText();
+Item_Producto item =Item_Producto(id ,txt, "activo");
+  list_items.AgregarDatos_itemProducto(item);
+    }
+    
  public void actualizarTabla(String id ) {
               DefaultTableModel modelo = (DefaultTableModel) tabla_contenido.getModel();
 
@@ -68,8 +93,8 @@ public class Vista_items_almacen extends javax.swing.JDialog {
         jCalendar1 = new com.toedter.calendar.JCalendar();
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        cantidad_txt = new javax.swing.JTextField();
+        agregar_item = new javax.swing.JButton();
         tabla = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla_contenido = new javax.swing.JTable();
@@ -115,16 +140,16 @@ public class Vista_items_almacen extends javax.swing.JDialog {
         jLabel3.setText("Cantidad");
         jPanel1.add(jLabel3);
 
-        jTextField2.setMinimumSize(new java.awt.Dimension(0, 0));
-        jPanel1.add(jTextField2);
+        cantidad_txt.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel1.add(cantidad_txt);
 
-        jButton1.setText("Agregar items");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        agregar_item.setText("Agregar items");
+        agregar_item.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                agregar_itemActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(agregar_item);
 
         Formulario.add(jPanel1);
 
@@ -132,6 +157,8 @@ public class Vista_items_almacen extends javax.swing.JDialog {
 
         tabla.setPreferredSize(new java.awt.Dimension(561, 315));
         tabla.setLayout(new java.awt.BorderLayout());
+
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(300, 200));
 
         tabla_contenido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,7 +179,8 @@ public class Vista_items_almacen extends javax.swing.JDialog {
                 return types [columnIndex];
             }
         });
-        tabla_contenido.setPreferredSize(new java.awt.Dimension(300, 120));
+        tabla_contenido.setMaximumSize(new java.awt.Dimension(2147483647, 2147483647));
+        tabla_contenido.setPreferredSize(new java.awt.Dimension(300, 1000));
         jScrollPane1.setViewportView(tabla_contenido);
 
         tabla.add(jScrollPane1, java.awt.BorderLayout.CENTER);
@@ -173,9 +201,9 @@ public class Vista_items_almacen extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void agregar_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_itemActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_agregar_itemActionPerformed
 
     private void jCalendar1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendar1PropertyChange
        if(evt.getOldValue() !=null){
@@ -233,9 +261,10 @@ public class Vista_items_almacen extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Cuerpo;
     private javax.swing.JPanel Formulario;
+    private javax.swing.JButton agregar_item;
     private javax.swing.JPanel cabecera;
+    private javax.swing.JTextField cantidad_txt;
     private javax.swing.JTextField fecha_txt;
-    private javax.swing.JButton jButton1;
     private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -243,8 +272,15 @@ public class Vista_items_almacen extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JPanel tabla;
     private javax.swing.JTable tabla_contenido;
     // End of variables declaration//GEN-END:variables
+
+    private Item_Producto Item_Producto(String id, String txt, String activo) {
+        Item_Producto ITE= new Item_Producto(id,txt,activo);
+
+        return ITE;
+    }
+
+ 
 }

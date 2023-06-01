@@ -292,15 +292,19 @@ public class Controlador_Tienda {
     public void actualizarTablaCompras(){
                     DefaultTableModel modelo_tABLE = (DefaultTableModel) tienda_vista.getCarrito().getTable_compras().getModel();
               modelo_tABLE.setRowCount(0);
+              int sumatoria =0 ;
              for(Modelo_producto_carrito pro : modelo_listaproductos_carrito.obtenerListaCarrito()){
                  System.out.println(pro.getId()+"AQUI ESTA EL ID CARRITO"
                          + "");
               Object[] Fila = {pro.getId(), pro.getProducto(), 
                              pro.getCantidad(), pro.getPrecio(), 
                             };
-              
+              sumatoria+=pro.getPrecio()*pro.getCantidad();
             modelo_tABLE.addRow(Fila);
              }
+             
+             tienda_vista.getCarrito().getLabel_total_monto().setText(sumatoria+"");
+             
     }
              
     

@@ -4,6 +4,7 @@
  */
 package com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_Compra.Vistas;
 
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -33,7 +34,7 @@ public class Carrito_Compras extends javax.swing.JPanel {
         table_compras = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        label_total_monto = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 204, 0));
         setPreferredSize(new java.awt.Dimension(250, 300));
@@ -63,11 +64,11 @@ public class Carrito_Compras extends javax.swing.JPanel {
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel1);
 
-        jLabel2.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("0");
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(jLabel2);
+        label_total_monto.setFont(new java.awt.Font("Yu Gothic Medium", 1, 18)); // NOI18N
+        label_total_monto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        label_total_monto.setText("0");
+        label_total_monto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(label_total_monto);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
@@ -75,9 +76,9 @@ public class Carrito_Compras extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel label_total_monto;
     private javax.swing.JTable table_compras;
     // End of variables declaration//GEN-END:variables
 
@@ -87,6 +88,10 @@ public class Carrito_Compras extends javax.swing.JPanel {
 
     public JTable getTable_compras() {
         return table_compras;
+    }
+
+    public JLabel getLabel_total_monto() {
+        return label_total_monto;
     }
 
 

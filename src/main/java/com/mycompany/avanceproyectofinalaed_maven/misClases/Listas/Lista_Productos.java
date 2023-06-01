@@ -155,10 +155,119 @@ try{
 
     
     
+     //Ordenamiento Burbuja
+    public void ordenarPorId() {
+        int n = lista_productos.size();
+
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                String id1 = lista_productos.get(j).getId();
+                String id2 = lista_productos.get(j + 1).getId();
+
+                if (id1.compareTo(id2) > 0) {
+                    // Intercambiar los productos
+                    Productos temp = lista_productos.get(j);
+                    lista_productos.set(j, lista_productos.get(j + 1));
+                    lista_productos.set(j + 1, temp);
+                }
+            }
+        }
+    }
     
+    public void ordenarPorCantidad() {
+        int n = lista_productos.size();
+
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+
+            for (int j = i + 1; j < n; j++) {
+                int cantidad1 = lista_productos.get(j).getCantidad();
+                int cantidad2 = lista_productos.get(minIndex).getCantidad();
+
+                if (cantidad1 < cantidad2) {
+                    minIndex = j;
+                }
+            }
+
+            if (minIndex != i) {
+                // Intercambiar los productos
+                Productos temp = lista_productos.get(i);
+                lista_productos.set(i, lista_productos.get(minIndex));
+                lista_productos.set(minIndex, temp);
+            }
+        }
+    }
     
-    
-    
-    
-    
+      //Ordenamiento QuickSort
+    public void ordenarPorIdQuickSort() {
+        ordenarPorIdRecursivo(0, lista_productos.size() - 1);
+    }
+
+    private void ordenarPorIdRecursivo(int inicio, int fin) {
+        if (inicio < fin) {
+            int indiceParticion = particion(inicio, fin);
+            ordenarPorIdRecursivo(inicio, indiceParticion - 1);
+            ordenarPorIdRecursivo(indiceParticion + 1, fin);
+        }
+    }
+
+    private int particion(int inicio, int fin) {
+        String pivote = lista_productos.get(fin).getId();
+        int i = inicio - 1;
+
+        for (int j = inicio; j < fin; j++) {
+            if (lista_productos.get(j).getId().compareTo(pivote) < 0) {
+                i++;
+                intercambiar(i, j);
+            }
+        }
+
+        intercambiar(i + 1, fin);
+        return i + 1;
+    }
+
+    private void intercambiar(int i, int j) {
+        Productos temp = lista_productos.get(i);
+        lista_productos.set(i, lista_productos.get(j));
+        lista_productos.set(j, temp);
+    }
+
+    //Ordenamiento ShellShort
+    public void ordenarPorNombreShellShort() {
+        int n = lista_productos.size();
+        int salto = n / 2;
+
+        while (salto > 0) {
+            for (int i = salto; i < n; i++) {
+                Productos temp = lista_productos.get(i);
+                int j = i;
+
+                while (j >= salto && lista_productos.get(j - salto).getNombre().compareTo(temp.getNombre()) > 0) {
+                    lista_productos.set(j, lista_productos.get(j - salto));
+                    j -= salto;
+                }
+
+                lista_productos.set(j, temp);
+            }
+
+            salto /= 2;
+        }
+    }
+       //Ordenamiento por insercion
+    public void ordenarPorNombre() {
+        int n = lista_productos.size();
+
+        for (int i = 1; i < n; i++) {
+            Productos producto = lista_productos.get(i);
+            String nombre = producto.getNombre();
+            int j = i - 1;
+
+            while (j >= 0 && lista_productos.get(j).getNombre().compareTo(nombre) > 0) {
+                lista_productos.set(j + 1, lista_productos.get(j));
+                j--;
+            }
+
+            lista_productos.set(j + 1, producto);
+        }
+    }
 }

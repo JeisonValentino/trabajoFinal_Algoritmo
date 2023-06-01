@@ -138,6 +138,8 @@ tablaAlmacen.getColumnModel().getColumn(7).setCellEditor(new BotonEditor(new JCh
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btnShellsort = new javax.swing.JButton();
+        btnQuickSort = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         camboBusqueda = new javax.swing.JTextField();
 
@@ -284,8 +286,8 @@ tablaAlmacen.getColumnModel().getColumn(7).setCellEditor(new BotonEditor(new JCh
         jScrollPane1.setViewportBorder(javax.swing.BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         tablaAlmacen.setAutoCreateRowSorter(true);
-        tablaAlmacen.setBackground(new java.awt.Color(30, 30, 30));
-        tablaAlmacen.setForeground(new java.awt.Color(0, 0, 204));
+        tablaAlmacen.setBackground(new java.awt.Color(255, 255, 255));
+        tablaAlmacen.setForeground(new java.awt.Color(0, 0, 0));
         tablaAlmacen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -335,13 +337,44 @@ tablaAlmacen.getColumnModel().getColumn(7).setCellEditor(new BotonEditor(new JCh
         botones_acciones.add(agregar_btn);
 
         jButton1.setText("Burbuja");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         botones_acciones.add(jButton1);
 
         jButton2.setText("Seleccion");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         botones_acciones.add(jButton2);
 
         jButton3.setText("Insercion");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         botones_acciones.add(jButton3);
+
+        btnShellsort.setText("ShellSort");
+        btnShellsort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShellsortActionPerformed(evt);
+            }
+        });
+        botones_acciones.add(btnShellsort);
+
+        btnQuickSort.setText("QuickSort");
+        btnQuickSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuickSortActionPerformed(evt);
+            }
+        });
+        botones_acciones.add(btnQuickSort);
 
         jLabel2.setBackground(new java.awt.Color(255, 204, 0));
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -428,14 +461,13 @@ class BotonEditor extends DefaultCellEditor {
        
     }
                                 abrirVentana((String) rowData[0]);
-                JOptionPane.showMessageDialog(null, "Botón presionado en fila: " +    rowData[0] +"-"+   rowData[1]+" - "+   rowData[2]+"-"+   rowData[3]    );
            
             }
             
         });
     }
  private void abrirVentana(String id) {
-     System.out.println(id+"AQUI ESTA EL ID");
+   
      if(id!=null){
         Vista_items_almacen vi = new Vista_items_almacen(null, true, id);
       vi.setVisible(true);
@@ -540,6 +572,34 @@ imagen_almacen= new ImagenAlmacen(nombreArchivo,bytes);
     private void tablaAlmacenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaAlmacenMouseClicked
 
     }//GEN-LAST:event_tablaAlmacenMouseClicked
+
+    private void btnShellsortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShellsortActionPerformed
+        // TODO add your handling code here:
+        listaProductos.ordenarPorNombreShellShort();
+        actualizarTabla();
+
+    }//GEN-LAST:event_btnShellsortActionPerformed
+
+    private void btnQuickSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuickSortActionPerformed
+        // TODO add your handling code here:
+        listaProductos.ordenarPorIdQuickSort();
+        actualizarTabla();
+    }//GEN-LAST:event_btnQuickSortActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     listaProductos.ordenarPorId();
+        actualizarTabla();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+   // TODO add your handling code here:
+        listaProductos.ordenarPorNombre();
+        actualizarTabla();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
  
     /**
@@ -666,6 +726,8 @@ BufferedImage imagen = null;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton agregar_btn;
     private javax.swing.JPanel botones_acciones;
+    private javax.swing.JButton btnQuickSort;
+    private javax.swing.JButton btnShellsort;
     private javax.swing.JButton btn_imagen;
     private javax.swing.JPanel cabecera;
     private javax.swing.JTextField camboBusqueda;

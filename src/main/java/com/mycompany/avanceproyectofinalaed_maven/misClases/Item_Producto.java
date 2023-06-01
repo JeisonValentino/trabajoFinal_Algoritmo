@@ -23,6 +23,10 @@ private String caducidad;
 private final String fecha_creacion;
 private String fecha_actualizacion;
 private String estado;
+
+  
+
+
     public Item_Producto(String codigo, String caducidad,String estado) {
         this.id = GenerarCodigo(codigo);
         this.caducidad=caducidad;
