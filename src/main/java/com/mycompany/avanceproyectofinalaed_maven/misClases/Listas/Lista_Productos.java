@@ -5,6 +5,7 @@
 package com.mycompany.avanceproyectofinalaed_maven.misClases.Listas;
 
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Exceciones.PropiedadesFaltantes;
+import com.mycompany.avanceproyectofinalaed_maven.misClases.Item_Producto;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Productos;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Repositorios.Interface_productos;
 import java.lang.reflect.Array;
@@ -77,10 +78,19 @@ public class Lista_Productos extends PropiedadesFaltantes implements Interface_p
     }
     
     public void  AgregarDatos(Productos  producto)  {
-        
+        Lista_Item_Producto list=Lista_Item_Producto.getInstancia();
         try{
          verificarTodasPropiedadesFaltantes(producto);
         lista_productos.add(producto);
+        
+        
+        if(producto.getCantidad()>0){
+            for(int i =0 ; i<producto.getCantidad();i++){
+            Item_Producto item=new Item_Producto(producto.getId(), "01/07/2023", "activo");
+            list.AgregarDatos_itemProducto(item);
+            }
+        }
+        
         
            }catch(IllegalArgumentException ex ){
 

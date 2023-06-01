@@ -106,9 +106,11 @@ public class Inicio extends javax.swing.JFrame {
         Empleado emp1 = new Empleado("Inventario","CTAMBO23","Enrique Flores",20,1234567);
         String codigo = JOptionPane.showInputDialog(null, "Ingrese su código:");
         if(codigo.equals("CTAMBO23")){
-            
+            System.out.print("paso el inicio de session");
             Almacen almacen = new Almacen();
+             System.out.print("paso la clase  de session");
             almacen.setVisible(true);
+             System.out.print("se esta mostrando .. ");
         } else {
             JOptionPane.showMessageDialog(null, "ERROR: CODIGO INCORRECTO");
         }

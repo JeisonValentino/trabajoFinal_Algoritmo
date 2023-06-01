@@ -8,6 +8,7 @@ import com.mycompany.avanceproyectofinalaed_maven.misClases.Constantes.codificac
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Exceciones.PropiedadesFaltantes;
 import static com.mycompany.avanceproyectofinalaed_maven.misClases.Exceciones.PropiedadesFaltantes.verificarTodasPropiedadesFaltantes;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Item_Producto;
+import static com.mycompany.avanceproyectofinalaed_maven.misClases.Listas.Lista_Productos.instancia;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Repositorios.Interface_item_productos;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +22,27 @@ import javax.swing.JOptionPane;
  */
 public class Lista_Item_Producto extends PropiedadesFaltantes implements Interface_item_productos  {
     
-    
-    private List<Item_Producto> lista_item_producto =new ArrayList<>();
+    public static  Lista_Item_Producto instancia ; 
+    public List<Item_Producto> lista_item_producto ;
 
     public Lista_Item_Producto() {
+        lista_item_producto =new ArrayList<>();
     }
 
     public Lista_Item_Producto(List<Item_Producto> lista_item_producto) {
         this.lista_item_producto=lista_item_producto;
     }
 
+    
+    
+        
+    public static Lista_Item_Producto getInstancia() {
+        if (instancia == null) {
+            instancia = new Lista_Item_Producto();
+        }
+        return instancia;
+    }
+    
     @Override
     public void ActualizarDatos_itemProducto(Item_Producto producto) {
 
@@ -112,11 +124,12 @@ try{
     @Override
     public Optional<List<Item_Producto>> retornarLista_itemProducto_especifico(String codigo) {
         
-        
+      
         if(!retornarLista_itemProducto().isEmpty()){ //VERIFICA SI EL RETORNO DE TODA LA LISTA DE LOS ITEMS PRODUCTO RETORNA VACIO O NO 
 List<Item_Producto> list_items=  new ArrayList<>();
 
 for( Item_Producto item_pro :retornarLista_itemProducto().get()){
+   
     if(item_pro.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA).equals(codigo.substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA))){
         list_items.add(item_pro);
     }

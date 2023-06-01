@@ -4,6 +4,9 @@
  */
 package com.mycompany.avanceproyectofinalaed_maven.misClases;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  *
  * @author Jvalentino
@@ -21,6 +24,33 @@ public class ImagenAlmacen {
         this.imagen_id = "img-"+contador++;
         this.titulo = titulo;
         this.imagen = imagen;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ImagenAlmacen other = (ImagenAlmacen) obj;
+        if (!Objects.equals(this.imagen_id, other.imagen_id)) {
+            return false;
+        }
+        if (!Objects.equals(this.titulo, other.titulo)) {
+            return false;
+        }
+        return Arrays.equals(this.imagen, other.imagen);
     }
 
     

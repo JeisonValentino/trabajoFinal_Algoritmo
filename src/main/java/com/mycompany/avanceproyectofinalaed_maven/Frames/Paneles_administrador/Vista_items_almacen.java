@@ -4,6 +4,21 @@
  */
 package com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_administrador;
 
+import static com.mycompany.avanceproyectofinalaed_maven.Frames.Paneles_administrador.Almacen.redimensionarImagen;
+import com.mycompany.avanceproyectofinalaed_maven.misClases.Item_Producto;
+import com.mycompany.avanceproyectofinalaed_maven.misClases.Listas.Lista_Item_Producto;
+import com.mycompany.avanceproyectofinalaed_maven.misClases.Productos;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Jvalentino
@@ -13,11 +28,29 @@ public class Vista_items_almacen extends javax.swing.JDialog {
     /**
      * Creates new form Vista_items_almacen
      */
-    public Vista_items_almacen(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    
+    private Lista_Item_Producto list_items =Lista_Item_Producto.getInstancia() ;
+    public Vista_items_almacen(JFrame frame, boolean modal, String id) {
+        super(frame, modal);
         initComponents();
+    
+        actualizarTabla(id);
     }
+ public void actualizarTabla(String id ) {
+              DefaultTableModel modelo = (DefaultTableModel) tabla_contenido.getModel();
 
+  if(!list_items.retornarLista_itemProducto_especifico(id).isEmpty()){
+  
+      modelo.setRowCount(0);
+        for (Item_Producto producto : list_items.retornarLista_itemProducto_especifico(id).get()) {
+ System.out.print("paso el todo ");
+            Object[] Fila = {producto.getId(), producto.getCaducidad(), 
+                             producto.getFecha_creacion(), producto.getEstado(), 
+                             producto.getFecha_actualizacion()};
+            modelo.addRow(Fila);
+    }
+    }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +60,133 @@ public class Vista_items_almacen extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Cuerpo = new javax.swing.JPanel();
+        Formulario = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        fecha_txt = new javax.swing.JTextField();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        tabla = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabla_contenido = new javax.swing.JTable();
+        cabecera = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        Cuerpo.setLayout(new java.awt.BorderLayout());
+
+        Formulario.setMinimumSize(new java.awt.Dimension(0, 0));
+        Formulario.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 5));
+
+        jPanel2.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
+
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Caducidad");
+        jLabel4.setMinimumSize(new java.awt.Dimension(0, 0));
+        jLabel4.setName(""); // NOI18N
+        jPanel2.add(jLabel4);
+
+        fecha_txt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fecha_txtActionPerformed(evt);
+            }
+        });
+        jPanel2.add(fecha_txt);
+
+        jCalendar1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jCalendar1PropertyChange(evt);
+            }
+        });
+        jPanel2.add(jCalendar1);
+
+        Formulario.add(jPanel2);
+
+        jPanel1.setLayout(new java.awt.GridLayout(3, 1));
+
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Cantidad");
+        jPanel1.add(jLabel3);
+
+        jTextField2.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel1.add(jTextField2);
+
+        jButton1.setText("Agregar items");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+
+        Formulario.add(jPanel1);
+
+        Cuerpo.add(Formulario, java.awt.BorderLayout.PAGE_START);
+
+        tabla.setPreferredSize(new java.awt.Dimension(561, 315));
+        tabla.setLayout(new java.awt.BorderLayout());
+
+        tabla_contenido.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "id", "caducidad", "fecha_creacion", "Estado", "Fecha_actualizacion"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        tabla_contenido.setPreferredSize(new java.awt.Dimension(300, 120));
+        jScrollPane1.setViewportView(tabla_contenido);
+
+        tabla.add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        Cuerpo.add(tabla, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(Cuerpo, java.awt.BorderLayout.CENTER);
+
+        cabecera.setPreferredSize(new java.awt.Dimension(561, 100));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/LogoSinFondoResized.PNG"))); // NOI18N
+        jLabel1.setMinimumSize(new java.awt.Dimension(0, 0));
+        jLabel1.setPreferredSize(new java.awt.Dimension(250, 80));
+        cabecera.add(jLabel1);
+
+        getContentPane().add(cabecera, java.awt.BorderLayout.NORTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jCalendar1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jCalendar1PropertyChange
+       if(evt.getOldValue() !=null){
+           SimpleDateFormat ft= new SimpleDateFormat("dd/MM/yyyy");
+           fecha_txt.setText(ft.format(jCalendar1.getCalendar().getTime()));
+       }
+    }//GEN-LAST:event_jCalendar1PropertyChange
+
+    private void fecha_txtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fecha_txtActionPerformed
+        
+    }//GEN-LAST:event_fecha_txtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,7 +218,7 @@ public class Vista_items_almacen extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                Vista_items_almacen dialog = new Vista_items_almacen(new javax.swing.JFrame(), true);
+                Vista_items_almacen dialog = new Vista_items_almacen(new javax.swing.JFrame(), true,"");
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -86,5 +231,20 @@ public class Vista_items_almacen extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Cuerpo;
+    private javax.swing.JPanel Formulario;
+    private javax.swing.JPanel cabecera;
+    private javax.swing.JTextField fecha_txt;
+    private javax.swing.JButton jButton1;
+    private com.toedter.calendar.JCalendar jCalendar1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel tabla;
+    private javax.swing.JTable tabla_contenido;
     // End of variables declaration//GEN-END:variables
 }

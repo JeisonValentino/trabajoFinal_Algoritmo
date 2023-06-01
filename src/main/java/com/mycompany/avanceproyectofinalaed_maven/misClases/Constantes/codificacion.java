@@ -11,7 +11,7 @@ package com.mycompany.avanceproyectofinalaed_maven.misClases.Constantes;
 public class codificacion {
     
  
-         public static final int PRIMERA_ESCALA = 1;
+         public static final int PRIMERA_ESCALA = 0;
      public static final int SEGUNDA_ESCALA = 3;
   
     

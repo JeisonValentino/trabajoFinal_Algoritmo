@@ -8,6 +8,7 @@ import com.mycompany.avanceproyectofinalaed_maven.misClases.ImagenAlmacen;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Listas.Lista_Productos;
 import com.mycompany.avanceproyectofinalaed_maven.misClases.Productos;
 import java.awt.Component;
+import java.awt.Frame;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.RenderingHints;
@@ -418,7 +419,6 @@ class BotonEditor extends DefaultCellEditor {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Acción a realizar al hacer clic en el botón
-                
                  DefaultTableModel model = (DefaultTableModel) tablaAlmacen.getModel();
     
     Object[] rowData = new Object[model.getColumnCount()];
@@ -427,12 +427,20 @@ class BotonEditor extends DefaultCellEditor {
         rowData[i] = model.getValueAt(selectedRow, i);
        
     }
-                
+                                abrirVentana((String) rowData[0]);
                 JOptionPane.showMessageDialog(null, "Botón presionado en fila: " +    rowData[0] +"-"+   rowData[1]+" - "+   rowData[2]+"-"+   rowData[3]    );
+           
             }
+            
         });
     }
-
+ private void abrirVentana(String id) {
+     System.out.println(id+"AQUI ESTA EL ID");
+     if(id!=null){
+        Vista_items_almacen vi = new Vista_items_almacen(null, true, id);
+      vi.setVisible(true);
+     }
+    }
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
         if (isSelected) {
@@ -474,12 +482,22 @@ class BotonEditor extends DefaultCellEditor {
 }
     private void agregar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_btnActionPerformed
 
+ String nombre = null;
+      String marca = null;
+      String seccion = null;
+               double precio = 0;
+                              int cantidad=0;
 
-        String nombre = textFieldNombre.getText();
-        String marca = comboBoxMarca.getSelectedItem().toString();
-        String seccion = comboBoxSeccion.getSelectedItem().toString();
-        double precio = Double.parseDouble(textFieldPrecio.getText());
-        int cantidad = Integer.parseInt(textFieldCantidad.getText());
+            try{
+                nombre = textFieldNombre.getText();
+         marca = comboBoxMarca.getSelectedItem().toString();
+       seccion = comboBoxSeccion.getSelectedItem().toString();
+         precio = Double.parseDouble(textFieldPrecio.getText());
+         cantidad = Integer.parseInt(textFieldCantidad.getText());
+            }
+            catch(Exception ex){
+                System.out.println(ex.getMessage());
+            }
 Productos producto =new Productos (nombre,marca,seccion ,precio,imagen_almacen ,cantidad);
   listaProductos.AgregarDatos(producto);
  

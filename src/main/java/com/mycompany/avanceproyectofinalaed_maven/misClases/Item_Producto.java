@@ -16,7 +16,8 @@ import java.util.List;
  * @author Jvalentino
  */
 public class Item_Producto {
- 
+     private static int contador = 1; // Variable estática para llevar el conteo
+
     private String id ;
 private String caducidad;
 private final String fecha_creacion;
@@ -38,21 +39,22 @@ private String estado;
 
     private String GenerarCodigo(String codigoProducto ){
          String codigoItem = codigoProducto.substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA); 
-         Interface_item_productos interfaz= new Lista_Item_Producto();
+         Lista_Item_Producto interfaz=  Lista_Item_Producto.getInstancia();
          
      if(interfaz.retornarLista_itemProducto().isEmpty()){
-
- return codigoItem + String.format("%03d",1);
+System.out.println("paso el retorno EMPTY "+codigoItem+"--> "+ String.format("%03d",1)+ codigoItem + String.format("%03d",1));
+ return codigoItem +"-"+ String.format("%03d",1);
          }else{
-             
-            List<Item_Producto> items = interfaz.retornarLista_itemProducto().get(); 
+             System.out.println("paso el retorno SIN EMPTY ");
+            List<Item_Producto> items = interfaz.retornarLista_itemProducto_especifico(codigoProducto).get(); 
              
             for(Item_Producto it : items ){
-                if(codigoItem.equals(it.id.substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA))){
-                     return codigoItem + String.format("%03d", items.size()+1);
+                if(codigoItem.equals(it.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA))){
+               
+                     return codigoItem +"-"+ String.format("%03d", items.size()+1);
                 }
             }
- return codigoItem + String.format("%03d",1);
+ return codigoItem +"-"+ String.format("%03d",1);
          }
         
     }
