@@ -15,6 +15,7 @@ import java.util.Optional;
 public interface  Interface_productos {
      void  ActualizarDatos(Productos producto );
      void eliminarFila (String id );
+       void eliminarFila_comienzo ( );
          void  AgregarDatos(Productos  producto);
         Optional< Productos> buscarPorId(String id )  ;
         Optional<List<Productos>> retornarListaProductos();

@@ -253,7 +253,7 @@ public class Controlador_Tienda {
           try {
 
               imagen = ImageIO.read(new ByteArrayInputStream(pro.getImagenAlmacen().getImagen()));
-              System.out.println(panel.getImagen_producto().getWidth());
+          
                               imagen2 = redimensionarImagen(imagen,  120,120);
                             icon= new ImageIcon(imagen2);
           }catch(Exception ex){
@@ -265,12 +265,9 @@ public class Controlador_Tienda {
                     @Override
                     public void mouseClicked(MouseEvent e) {
                         JOptionPane.showMessageDialog(null, "Seleccionaste una " + pro.getNombre() + "de la marca " + pro.getMarca());
-                        try{
+            
                         agregarProducto_carrito(pro);
-                        }catch(IllegalArgumentException ex ){
-                                    JOptionPane.showMessageDialog(null, "Se encontraron problemas: " + ex.getMessage(), "Atención", JOptionPane.WARNING_MESSAGE);
-
-                        }
+                
                         }
                 });
                 vista__producto.getjPanel2().add(panel);
@@ -326,9 +323,11 @@ public class Controlador_Tienda {
     }
 
     actualizarTablaCompras();
-} catch (Exception ex) {
-    // Manejo de excepciones
-}
+       }catch(IllegalStateException ex ){
+                            System.out.println("entro al try cacht");
+                                    JOptionPane.showMessageDialog(null, "Se encontraron problemas: " + ex.getMessage(), "Atención", JOptionPane.WARNING_MESSAGE);
+
+                        }
 
                 
 

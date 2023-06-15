@@ -55,21 +55,24 @@ public class Modelo_listaproductos_carrito {
                                  Lista_Item_Producto  interfaz = Lista_Item_Producto.getInstancia();
         if(!obtenerListaCarrito().isEmpty()){
                     boolean estadoActivoEncontrado = false;
-        
-        for(Modelo_producto_carrito item_pro:  lista_productos){
+   
+          
+               if(obtenerListaCarrito_espefico(m.getId()).Cantidad ==interfaz.retornarLista_itemProducto_especifico_estado(m.getId(),"activo").get().size()){
+                  
+               throw new IllegalStateException("Ya no hay mas productos ");
+               
+       
+        }else{
+                    for(Modelo_producto_carrito item_pro:  lista_productos){
     
             if(m.getId().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA).equals(item_pro.getCodigo_producto().substring(codificacion.PRIMERA_ESCALA, codificacion.SEGUNDA_ESCALA))){
               
              
-              if(obtenerListaCarrito_espefico(m.getId()).Cantidad ==interfaz.retornarLista_itemProducto_especifico_estado(m.getId(),"activo").get().size()){
-                   
-                    System.out.println("entro al parametro de no cantidad");
-                    return ; 
-                }
+         
               
                System.out.println(interfaz.retornarLista_itemProducto_especifico_estado(m.getId(),"activo").get().size());
          if(obtenerListaCarrito_espefico(m.getId()).getCantidad() <interfaz.retornarLista_itemProducto_especifico_estado(m.getId(),"activo").get().size()){
-                     System.out.println("entro al parametro de agregar producto");
+                 
                       estadoActivoEncontrado = true;
            
              item_pro.aumentarCantidad();
@@ -80,10 +83,13 @@ public class Modelo_listaproductos_carrito {
                 
             }
         }
+               }
        
           if (!estadoActivoEncontrado) {
             throw new IllegalStateException("No se encontraron productos activos");
         }
+          
+           
         
         }
    

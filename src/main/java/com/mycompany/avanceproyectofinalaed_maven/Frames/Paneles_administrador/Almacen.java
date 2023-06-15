@@ -140,6 +140,7 @@ tablaAlmacen.getColumnModel().getColumn(7).setCellEditor(new BotonEditor(new JCh
         jButton3 = new javax.swing.JButton();
         btnShellsort = new javax.swing.JButton();
         btnQuickSort = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         camboBusqueda = new javax.swing.JTextField();
 
@@ -325,7 +326,12 @@ tablaAlmacen.getColumnModel().getColumn(7).setCellEditor(new BotonEditor(new JCh
         botones_acciones.setPreferredSize(new java.awt.Dimension(866, 30));
         botones_acciones.setLayout(new java.awt.GridLayout(1, 7, 10, 10));
 
-        quitar_btn.setText("Quitar Producto");
+        quitar_btn.setText("Quitar Producto ID");
+        quitar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitar_btnActionPerformed(evt);
+            }
+        });
         botones_acciones.add(quitar_btn);
 
         agregar_btn.setText("Agregar Producto");
@@ -375,6 +381,14 @@ tablaAlmacen.getColumnModel().getColumn(7).setCellEditor(new BotonEditor(new JCh
             }
         });
         botones_acciones.add(btnQuickSort);
+
+        jButton5.setText("Eliminar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        botones_acciones.add(jButton5);
 
         jLabel2.setBackground(new java.awt.Color(255, 204, 0));
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
@@ -601,6 +615,34 @@ imagen_almacen= new ImagenAlmacen(nombreArchivo,bytes);
         actualizarTabla();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void quitar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitar_btnActionPerformed
+  
+           String id = JOptionPane.showInputDialog(null, "Ingrese su ID:");
+
+        // Verificar si se ingresó un ID o si se canceló el cuadro de diálogo
+        if (id != null && !id.isEmpty()) {
+            // El usuario ingresó un ID
+          listaProductos.eliminarFila(id);
+         actualizarTabla();
+        } else {
+            // El usuario canceló el cuadro de diálogo o no ingresó un ID
+            System.out.println("No se ingresó un ID");
+            // Aquí puedes manejar la situación sin ID
+        }
+       
+    }//GEN-LAST:event_quitar_btnActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+   
+        try{
+            listaProductos.eliminarFila_comienzo();
+                   actualizarTabla();
+        } catch (IllegalArgumentException ex) {
+                  JOptionPane.showMessageDialog(null, "Ocurrio un problema: " + ex.getMessage(), "Atención", JOptionPane.WARNING_MESSAGE);
+
+     }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
  
     /**
      * @param args the command line arguments
@@ -660,7 +702,9 @@ BufferedImage imagen = null;
                              producto.getSeccion(), producto.getPrecio(),new ImageIcon(imagen2)};
             modelo.addRow(Fila);
     }
-    }
+    }else{
+         modelo.setRowCount(0);
+  }
     }
     
     
@@ -743,6 +787,7 @@ BufferedImage imagen = null;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

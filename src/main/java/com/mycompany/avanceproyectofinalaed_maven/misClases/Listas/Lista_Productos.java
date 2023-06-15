@@ -67,7 +67,9 @@ public class Lista_Productos extends PropiedadesFaltantes implements Interface_p
     public void eliminarFila (String id ){
         
         try {
-        if(buscarPorId(id).isPresent())throw  new NoSuchElementException ("El id no existe ");
+            
+            System.out.println(buscarPorId(id).get());
+        if(!buscarPorId(id).isPresent())throw  new NoSuchElementException ("El id no existe ");
         
         lista_productos.remove(buscarPorId(id).get());
         }catch(NoSuchElementException ex ){
@@ -269,5 +271,14 @@ try{
 
             lista_productos.set(j + 1, producto);
         }
+    }
+
+    @Override
+    public void eliminarFila_comienzo() {
+        if(lista_productos.isEmpty())throw new IllegalArgumentException("no se encontraron datos en la lista de productos "); 
+        
+        
+        
+        lista_productos.remove(0);
     }
 }
